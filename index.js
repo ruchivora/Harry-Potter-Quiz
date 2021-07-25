@@ -13,12 +13,13 @@ console.log("Lets Start The Game! \n");
 
 console.log("-------------------------------------------\n");
 
-function play( question , answer ){
+function play( question , options ,answer ){
+  
+  console.log(question)
   // Input
-  var userans = readlineSync.question( question );
+  var userans = readlineSync.question( options );
 
   //Function Logic
-  
   if ( userans === answer ){
     score = score +1 ;
     console.log("you were right!   Score:" ,score );
@@ -31,16 +32,39 @@ function play( question , answer ){
 
 //Function Calls
 
-play("Who were Harry's parents? \n 1 Henry and Maggie Potter \n 2 James and Lily Potter \n 3 William and Elizabeth Potter \n Enter your answer : ", "2" );
+var QuestionList = [
+  {
+    question : "Who were Harry's parents? \n",
+    options  : "1 Henry and Maggie Potter \n2 James and Lily Potter \n3 William and Elizabeth Potter \nEnter the option : ",
+    answer : "2"
+  },
+  {
+    question : "Who are the muggle aunt and uncle that Harry must live with every summer? \n",
+    options  : "1 Ned and Camilla Diddly \n2 Ralph and Magnolia Dudley \n3 Vernon and Petunia Dursley \nEnter the option : ",
+    answer   : "3"
+  },
+  {
+  question : "In order of birth, who are the seven Weasley siblings? \n",
+  options  : "1 Percy, Bill, George, Charlie, Fred, Ron, Ginny \n2 George, Fred, Percy, Bill, Charlie, Ron, Ginny \n3 Bill, Charlie, Percy, Fred, George, Ron, Ginny \nEnter the option : ",
+  answer   : "3" 
+  },
+  {
+  question : "What are the three Unforgivable Curses? \n" ,
+  options  : "1 Impedimenta, Incarcerous and Incendio \n2 Avada Kedavra, Crucio and Imperio \n3 Expelliarmus, Expecto Patronum and Diffindo \nEnter the option : ",
+  answer   : "2"
+  },
+  {
+  question : "Which of these Hogwarts professors teaches Transfiguration?",
+  options  : "1 Snape \n2 Sprout \n3 McGonagall \nEnter the option : ",
+  answer   : "3"
+  }
 
-play("Who are the muggle aunt and uncle that Harry must live with every summer? \n 1 Ned and Camilla Diddly \n 2 Ralph and Magnolia Dudley \n 3 Vernon and Petunia Dursley \n Enter your answer : ", "3") ;
+]
 
-
-play("In order of birth, who are the seven Weasley siblings? \n 1 Percy, Bill, George, Charlie, Fred, Ron, Ginny \n 2 George, Fred, Percy, Bill, Charlie, Ron, Ginny \n 3 Bill, Charlie, Percy, Fred, George, Ron, Ginny \n Enter your answer : ", "3") ;
-
-play("What are the three Unforgivable Curses? \n 1 Impedimenta, Incarcerous and Incendio \n 2 Avada Kedavra, Crucio and Imperio \n 3 Expelliarmus, Expecto Patronum and Diffindo \n Enter your answer : ", "2") ;
-
-play("Which of these Hogwarts professors teaches Transfiguration? \n 1 Snape \n 2 Sprout \n 3 McGonagall \n Enter your answer : ", "3") ;
+for( var i = 0 ; i < QuestionList.length ; i++){
+  var currentQuestion = QuestionList[i];
+  play(currentQuestion.question ,currentQuestion.options , currentQuestion.answer);
+}
 
 console.log( "Your score is "+score );
 
